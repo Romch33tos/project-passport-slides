@@ -29,6 +29,7 @@ body {
   color: var(--text);
   -webkit-font-smoothing: antialiased;
 }
+
 /* ---------- Deck ---------- */
 .deck {
   position: relative;
@@ -73,6 +74,7 @@ body {
   flex-direction: column;
   gap: 28px;
 }
+
 /* ---------- Typography ---------- */
 .eyebrow {
   display: inline-flex;
@@ -128,6 +130,7 @@ strong {
   color: var(--text);
   font-weight: 700;
 }
+
 /* ---------- Components ---------- */
 .card {
   background: var(--surface);
@@ -213,6 +216,7 @@ ul.clean li::before {
   border-radius: 3px;
   background: var(--accent);
 }
+
 .quote {
   border-left: 4px solid var(--accent);
   padding: 8px 0 8px 24px;
@@ -299,4 +303,73 @@ ul.clean li::before {
   color: var(--accent);
   border: 2px solid var(--accent);
   box-shadow: none;
+}
+
+/* ---------- Progress ---------- */
+.progress-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: rgba(16, 24, 40, .06);
+  z-index: 10;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
+  transition: width .38s cubic-bezier(.4, 0, .2, 1);
+  border-radius: 0 4px 4px 0;
+}
+
+.counter {
+  position: absolute;
+  top: 32px;
+  right: clamp(24px, 6vw, 96px);
+  font-size: 15px;
+  font-weight: 600;
+  color: #9aa1ad;
+  letter-spacing: .04em;
+  z-index: 5;
+  user-select: none;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .slide {
+    padding: 48px 22px 88px;
+    align-items: flex-start;
+  }
+
+  .slide-inner {
+    gap: 20px;
+  }
+
+  .counter {
+    top: 20px;
+    right: 22px;
+  }
+}
+
+@media (max-height: 680px) {
+  .slide {
+    align-items: flex-start;
+    padding-top: 56px;
+  }
+
+  .slide-inner {
+    gap: 18px;
+  }
+
+  p,
+  li {
+    line-height: 1.45;
+  }
 }
