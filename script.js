@@ -55,5 +55,26 @@
     goToSlide(currentIndex - 1);
   }
 
+  document.addEventListener('keydown', function (event) {
+    if (
+      event.key === 'ArrowRight' ||
+      event.key === ' ' ||
+      event.key === 'Spacebar' ||
+      event.key === 'PageDown'
+    ) {
+      event.preventDefault();
+      showNextSlide();
+    } else if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
+      event.preventDefault();
+      showPreviousSlide();
+    } else if (event.key === 'Home') {
+      event.preventDefault();
+      goToSlide(0);
+    } else if (event.key === 'End') {
+      event.preventDefault();
+      goToSlide(totalSlides - 1);
+    }
+  });
+
   renderSlides();
 })();
