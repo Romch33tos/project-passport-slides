@@ -11,6 +11,10 @@
   var isLocked = false;
   var lockDuration = 340;
 
+  var touchStartX = 0;
+  var touchStartY = 0;
+  var isTouchActive = false;
+
   function padNumber(number) {
     return number < 10 ? '0' + number : '' + number;
   }
@@ -75,6 +79,50 @@
       goToSlide(totalSlides - 1);
     }
   });
+
+  deck.addEventListener('mousedown', function (event) {
+    if (event.target.closest('a, button, input, textarea, select')) return;
+
+    if (event.button === 0) {
+      event.preventDefault();
+      if (event.shiftKey) {
+        showPreviousSlide();
+      } else {
+        showNextSlide();
+      }
+    } else if (event.button === 2) {
+      event.preventDefault();
+      showPreviousSlide();
+    }
+  });
+
+  deck.addEventListener('contextmenu', function (event) {
+    event.preventDefault();
+  });
+
+  deck.addEventListener('touchstart', function (event) {
+    if (event.touches.length !== 1) return;
+    isTouchActive = true;
+    touchStartX = event.touches[0].clientX;
+    touchStartY = event.touches[0].clientY;
+  }, { passive: true });
+
+  deck.addEventListener('touchend', function (event) {
+    if (!isTouchActive) return;
+    isTouchActive = false;
+
+    var touch = event.changedTouches[0];
+    var deltaX = touch.clientX - touchStartX;
+    var deltaY = touch.clientY - touchStartY;
+
+    if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+      if (deltaX < 0) {
+        showNextSlide();
+      } else {
+        showPreviousSlide();
+      }
+    }
+  }, { passive: true });
 
   renderSlides();
 })();
