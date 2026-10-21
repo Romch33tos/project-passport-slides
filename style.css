@@ -213,3 +213,90 @@ ul.clean li::before {
   border-radius: 3px;
   background: var(--accent);
 }
+.quote {
+  border-left: 4px solid var(--accent);
+  padding: 8px 0 8px 24px;
+  font-size: clamp(20px, 2.2vw, 26px);
+  line-height: 1.5;
+  color: var(--text);
+  font-style: italic;
+  max-width: 64ch;
+}
+
+.quote cite {
+  display: block;
+  margin-top: 14px;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-soft);
+  letter-spacing: .02em;
+}
+
+.metric-row {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.metric-row .big {
+  font-size: clamp(40px, 5vw, 56px);
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.metric-row .label {
+  font-size: clamp(17px, 1.7vw, 20px);
+  color: var(--text-soft);
+  line-height: 1.3;
+}
+
+.pill {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.pill.ok {
+  background: #e6f7ee;
+  color: #0f7a45;
+}
+
+.pill.warn {
+  background: #fff4e5;
+  color: #b35c00;
+}
+
+.step {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.step .dot {
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  font-size: 22px;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, .25);
+}
+
+.step .dot.ghost {
+  background: var(--surface);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  box-shadow: none;
+}
